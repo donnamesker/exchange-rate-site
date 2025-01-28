@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const CurrencyTable = (props) => {
   const { base, rates } = props;
@@ -17,7 +18,7 @@ const CurrencyTable = (props) => {
         {rates.map(currency =>
           <tr key={currency.acronym}>
             <td className="ps-4 py-2">{currency.name} <small>({currency.acronym})</small></td>
-            <td className="text-end pe-4 py-2">{currency.rate.toFixed(6)}</td>
+            <td className="text-end pe-4 py-2"><Link to={`/currencyconverter?base=${base}&quote=${currency.acronym}`}>{currency.rate.toFixed(6)}</Link></td>
           </tr>
         )}
       </tbody>
